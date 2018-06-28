@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="assets/jq/jquery-3.2.1.js"></script>
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <title>Exercice 2</title>
+  </head>
+  <body>
+    <form class="releveNote"  action="traitement.php" method="get">
+      <label for="nom">Nom : </label><input type="text" name="nom" id="nom" /><br />
+      <label for="prenom">Prénom : </label><input type="text" name="prenom" id="prenom" /><br />
+      <label for="email">Email : </label><input type="email" name="email" id="email" /><br />
+      <label for="tel">Tel : </label><input type="tel" name="tel" id="tel" /><br />
+      <button type="button" name="button">Présentation</button>
+      <textarea name="name" rows="8" cols="80"></textarea>
+    </form>
+    <script>
+    var regexNom = /^[a-zA-Z\-ç]+$/;
+    var regexEmail = /^[a-zA-Z\-ç._0-9]+@[a-zA-Z\-.0-9]+\.[a-zA-Z]{2,4}$/;
+    var regexTel = /^[0]{1}[\d]{9}$/;
+    $('button').click(function(){
+      //Récupération des informations rentrées en variables
+      var nom = $('#nom').val();
+      var prenom = $ ('#prenom').val();
+      var email = $('#email').val();
+      var tel = $('#tel').val();
+      //Début de la condition
+      if ((regexNom.test(nom) == true) && (regexEmail.test(email) == true) && (regexTel.test(tel) == true)){//Condition avec vérification nom et prénom
+        $('textarea').text('Votre nom : ' + nom + '\nVotre prénom : ' + prenom + '\nVotre email : ' + email + '\nVotre numéro de téléphone : ' + tel);
+      } else {
+        alert('Un de vos champs contient des caractères incorrects !');
+      }
+    });
+    </script>
+  </body>
+</html>
